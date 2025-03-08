@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Fashion Exchange</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #2d0b0b;
+            color: white;
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background-color: #1f0b0b;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            padding: 6px 10px;
+        }
+
+        nav a:hover, .active {
+            border-bottom: 2px solid white;
+        }
+
+        .leaderboard-active {
+            background-color: #ff6699;
+            padding: 6px 10px;
+            border-radius: 5px;
+        }
+
+        /* Leaderboard Section */
+        .leaderboard-container {
+            padding: 30px 5%;
+        }
+
+        .leaderboard-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .leaderboard-container p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #8a4b4b;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #fff;
+        }
+
+        th {
+            background-color: #6a2c2c;
+        }
+
+        .leaderboard-entry {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #fff;
+        }
+
+        .leaderboard-entry img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .badge {
+            background-color: #ffcc00;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .streak {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1f0b0b;
+            color: white;
+            margin-top: 15px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Fashion Exchange 👗</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="exchange.html">Exchange</a></li>
+                <li><a href="tryon.html">Try-On</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="wardrobe.html">Wardrobe</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="leaderboard.html" class="leaderboard-active">Leaderboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard-container">
+        <h2>Leaderboard</h2>
+        <p>Check out the top contributors and earn rewards for participation!</p>
+
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>User</th>
+                    <th>Points</th>
+                    <th>Badges</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                <!-- Leaderboard data will be inserted dynamically -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Fashion Exchange - Sustainable Fashion Platform</p>
+    </footer>
+
+    <script>
+        // Sample leaderboard data
+        const leaderboardData = [
+            { rank: 1, name: "Alice", points: 1200, img: "assets/images/user1.jpg", badge: "🌟 Top Trader" },
+            { rank: 2, name: "Tia", points: 1050, img: "assets/images/user2.jpg", badge: "🔥 10-Day Streak" },
+            { rank: 3, name: "Shree", points: 980, img: "assets/images/user3.jpg", badge: "💎 Fashion Guru" },
+            { rank: 4, name: "Savita", points: 890, img: "assets/images/user4.jpg", badge: "💃 Style Star" },
+            { rank: 5, name: "Ally", points: 870, img: "assets/images/user5.jpg", badge: "🎖️ Rising Star" }
+        ];
+
+        // Populate the leaderboard table
+        const leaderboardBody = document.getElementById("leaderboard-body");
+
+        leaderboardData.forEach(user => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${user.rank}</td>
+                <td>
+                    <div class="leaderboard-entry">
+                        <img src="${user.img}" alt="${user.name}">
+                        ${user.name}
+                    </div>
+                </td>
+                <td>${user.points}</td>
+                <td><span class="badge">${user.badge}</span></td>
+            `;
+            leaderboardBody.appendChild(row);
+        });
+    </script>
+
+</body>
+</html>
