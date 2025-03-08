@@ -1,4 +1,207 @@
-<section class="community">
-    <h2>Join the Fashion Swap Challenge!</h2>
-    <p>Post your best swaps & win badges!</p>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Community & Challenges</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --dark-red: #56021F;
+            --berry: #7D1C4A;
+            --pink: #D17D98;
+            --light-pink: #F4CCE9;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--light-pink);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: var(--pink);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--dark-red);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .section {
+            padding: 15px;
+            background: var(--berry);
+            border-radius: 8px;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: var(--light-pink);
+        }
+
+        .post, .challenge {
+            background: var(--light-pink);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            color: var(--dark-red);
+        }
+
+        .likes {
+            color: var(--pink);
+            cursor: pointer;
+        }
+
+        .comments {
+            color: var(--berry);
+            margin-left: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            background: var(--light-pink);
+            border-radius: 6px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👥 Fashion Community & Challenges</h1>
+
+        <div class="grid">
+            <!-- Community Forum Section -->
+            <div class="section">
+                <h2>👥 Community Forum</h2>
+                <div id="posts"></div>
+            </div>
+
+            <!-- Fashion Challenges Section -->
+            <div class="section">
+                <h2>⭐ Fashion Challenges</h2>
+                <ul id="challenges"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const posts = [
+            {
+                id: 1,
+                user: "Sophia",
+                content: "Loving the sustainable fashion trends! 🌱 Who else is into thrift shopping?",
+                likes: 12,
+                comments: ["Absolutely! Thrift stores have the best finds!", "Eco-friendly fashion is the future!"]
+            },
+            {
+                id: 2,
+                user: "Daniel",
+                content: "Just swapped my old denim jacket for a vintage leather one. Best trade ever! 🔥",
+                likes: 8,
+                comments: ["That sounds amazing!", "Show us a pic!"]
+            },
+            {
+                id: 3,
+                user: "Mia",
+                content: "DIY upcycled denim projects are my new obsession. Who's with me? ✂️👖",
+                likes: 15,
+                comments: ["I want to try this!", "Denim bags are cool!"]
+            },
+            {
+                id: 4,
+                user: "Alex",
+                content: "Vintage thrift stores have the best hidden gems! Just found a 90s oversized blazer. 🕶️",
+                likes: 10,
+                comments: ["That sounds awesome!", "Oversized blazers are trendy!"]
+            },
+            {
+                id: 5,
+                user: "Ella",
+                content: "Minimalist fashion with sustainable materials is the way forward! 🌍",
+                likes: 18,
+                comments: ["Yes! Quality over quantity!", "Sustainability is key!"]
+            }
+        ];
+
+        const challenges = [
+            { title: "👗 Best Outfit Swap of the Week", participants: 15 },
+            { title: "♻️ Sustainable Fashion Challenge", participants: 20 },
+            { title: "👠 Thrifted Lookbook Showcase", participants: 12 },
+            { title: "🧥 Winter Wardrobe Revamp", participants: 18 },
+            { title: "👜 Best Handbag Upcycle", participants: 9 }
+        ];
+
+        function renderPosts() {
+            const postContainer = document.getElementById("posts");
+            postContainer.innerHTML = "";
+            posts.forEach(post => {
+                const postElement = document.createElement("div");
+                postElement.classList.add("post");
+                postElement.innerHTML = `
+                    <p><strong>${post.user}:</strong> ${post.content}</p>
+                    <div>
+                        <span class="likes" onclick="likePost(${post.id})">❤️ ${post.likes}</span>
+                        <span class="comments">💬 ${post.comments.length}</span>
+                    </div>
+                `;
+                postContainer.appendChild(postElement);
+            });
+        }
+
+        function renderChallenges() {
+            const challengeContainer = document.getElementById("challenges");
+            challengeContainer.innerHTML = "";
+            challenges.forEach(challenge => {
+                const challengeElement = document.createElement("li");
+                challengeElement.classList.add("challenge");
+                challengeElement.innerHTML = `
+                    <span>${challenge.title}</span>
+                    <span>${challenge.participants} participants</span>
+                `;
+                challengeContainer.appendChild(challengeElement);
+            });
+        }
+
+        function likePost(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                post.likes += 1;
+                renderPosts();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderPosts();
+            renderChallenges();
+        });
+    </script>
+</body>
+</html>
