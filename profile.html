@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | Fashion Exchange</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Root Variables */
+        :root {
+            --primary-color: #56021F;
+            --secondary-color: #7D1C4A;
+            --accent-color: #D17D98;
+            --light-bg: #F4CCE9;
+            --text-color: #ffffff;
+        }
+
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Profile Container */
+        .profile-container {
+            background: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            margin: auto;
+            text-align: left;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+
+        .profile-header h2 {
+            color: var(--light-bg);
+        }
+
+        .section {
+            background: var(--light-bg);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* List Styles */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: var(--accent-color);
+            padding: 8px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .add-btn {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 8px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .add-btn:hover {
+            background: var(--light-bg);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Profile</h1>
+
+    <div class="profile-container">
+        <!-- User Information -->
+        <div class="profile-header">
+            <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?cs=srgb&dl=pexels-olly-733872.jpg&fm=jpg" alt="User Profile">
+            <div>
+                <h2>Jane Doe</h2>
+                <p>Email: jane.doe@example.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+        </div>
+
+        <!-- Exchanged Clothes Section -->
+        <div class="section">
+            <h3>Exchanged Clothes</h3>
+            <ul id="exchanged-clothes">
+                <li>Denim Jacket</li>
+                <li>Leather Boots</li>
+                <li>Floral Dress</li>
+            </ul>
+            <button class="add-btn" onclick="addExchange()">+ Add Exchange</button>
+        </div>
+
+        <!-- Upcoming Events Section -->
+        <div class="section">
+            <h3>Upcoming Events</h3>
+            <ul id="upcoming-events">
+                <li>Wedding Party - 12th March</li>
+                <li>Fashion Show - 20th April</li>
+                <li>Business Gala - 5th May</li>
+            </ul>
+            <button class="add-btn" onclick="addEvent()">+ Add Event</button>
+        </div>
+    </div>
+
+    <script>
+        function addExchange() {
+            let newExchange = prompt("Enter the name of the exchanged clothing item:");
+            if (newExchange) {
+                let list = document.getElementById("exchanged-clothes");
+                let listItem = document.createElement("li");
+                listItem.textContent = newExchange;
+                list.appendChild(listItem);
+            }
+        }
+
+        function addEvent() {
+            let newEvent = prompt("Enter the upcoming event name and date:");
+            if (newEvent) {
+                let list = document.getElementById("upcoming-events");
+                let listItem = document.createElement("li");
+                listItem.textContent = newEvent;
+                list.appendChild(listItem);
+            }
+        }
+    </script>
+
+</body>
+</html>

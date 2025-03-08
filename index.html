@@ -44,6 +44,16 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo h1 {
             font-size: 20px;
             font-weight: bold;
         }
@@ -62,14 +72,30 @@
             color: var(--text-color);
             text-decoration: none;
             font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover, .active {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
         }
 
         .sign-in {
-            background-color: transparent;
-            border: 1px solid var(--text-color);
-            padding: 5px 10px;
-            color: var(--text-color);
+            background-color: var(--accent-color);
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 5px;
             cursor: pointer;
+            transition: 0.3s;
+            color: var(--dark-bg);
+        }
+
+        .sign-in:hover {
+            background-color: #ff3366;
         }
 
         /* Hero Section */
@@ -157,7 +183,7 @@
 
         .item img {
             width: 100%;
-            height: 400px; /* Increased image height */
+            height: 400px;
             object-fit: cover;
             border-radius: 5px 5px 0 0;
         }
@@ -199,14 +225,18 @@
 
     <!-- Navbar -->
     <header>
-        <div class="logo">ReStyle360</div>
+        <div class="logo">
+            <img src="assets/logo_bbb.png" alt="ReStyle360">
+            <h1>ReStyle360</h1>
+        </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Exchange</a></li>
-                <li><a href="#">Try On</a></li>
-                <li><a href="#">Community</a></li>
-                <li><a href="#">Wardrobe</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="exchange.html">Exchange</a></li>
+                <li><a href="tryon.html">Try-On</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="wardrobe.html">Wardrobe</a></li>
+                <li><a href="profile.html">Profile</a></li>
             </ul>
         </nav>
         <button class="sign-in">Sign In</button>
@@ -248,33 +278,6 @@
                     <h3>Denim Jacket</h3>
                     <p>Size L • Excellent Condition</p>
                     <p>80 Credits</p>
-                    <button class="view-details">View Details</button>
-                </div>
-            </div>
-            <div class="item">
-                <img src="https://sassafras.in/cdn/shop/files/SFTOPS42056_SFJEAN0575-1_6c755c76-d8ce-4b69-b89a-b04851c673de.jpg?v=1740819061" alt="Leather Boots">
-                <div class="item-details">
-                    <h3>Leather Boots</h3>
-                    <p>Size 9 • Barely Worn</p>
-                    <p>120 Credits</p>
-                    <button class="view-details">View Details</button>
-                </div>
-            </div>
-            <div class="item">
-                <img src="your-image3.jpg" alt="Floral Dress">
-                <div class="item-details">
-                    <h3>Floral Dress</h3>
-                    <p>Size M • Like New</p>
-                    <p>60 Credits</p>
-                    <button class="view-details">View Details</button>
-                </div>
-            </div>
-            <div class="item">
-                <img src="your-image4.jpg" alt="Casual T-shirt">
-                <div class="item-details">
-                    <h3>Casual T-shirt</h3>
-                    <p>Size XL • Brand New</p>
-                    <p>30 Credits</p>
                     <button class="view-details">View Details</button>
                 </div>
             </div>

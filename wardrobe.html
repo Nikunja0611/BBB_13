@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wardrobe</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Color Palette */
+        :root {
+            --primary-color: #56021F;
+            --secondary-color: #7D1C4A;
+            --accent-color: #D17D98;
+            --light-bg: #F4CCE9;
+            --text-color: #ffffff;
+        }
+
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Wardrobe Grid */
+        .wardrobe-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 1000px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .item {
+            background: var(--secondary-color);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+        }
+
+        .item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .item p {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--light-bg);
+        }
+
+        .stats-container {
+            background: var(--secondary-color);
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 5px;
+            width: 50%;
+            font-size: 1.2rem;
+        }
+
+        .suggestion-btn {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .suggestion-btn:hover {
+            background: var(--light-bg);
+        }
+
+        #suggested-outfit {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--light-bg);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Wardrobe</h1>
+
+    <!-- Fashion Footprint Tracker -->
+    <div class="stats-container">
+        <p><strong>Total Items in Wardrobe:</strong> <span id="total-items">10</span></p>
+    </div>
+
+    <!-- Outfit Suggestion Button -->
+    <button class="suggestion-btn" onclick="suggestOutfit()">Get Outfit Suggestion</button>
+    <p id="suggested-outfit"></p>
+
+    <!-- Wardrobe Grid -->
+    <div class="wardrobe-container">
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtoAixQy75htXHckUlgC7ZPvRJFvfnpv6rSA&s" alt="Denim Jacket">
+            <p>Denim Jacket</p>
+        </div>
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm6wprz4MVAu3yiDs3gwTZmTm_ed23J7rF3A&s" alt="Hoodie">
+            <p>Hoodie</p>
+        </div>
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Fe-eeGVVUX8kjRLvj8DOosnGD-N7u-axMA&s" alt="Summer Dress">
+            <p>Summer Dress</p>
+        </div>
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNr0w8ZU_B-erk_o1bwgXr9QRVnExNVKfMUA&s" alt="T-Shirt">
+            <p>Graphic T-Shirt</p>
+        </div>
+        <div class="item">
+            <img src="https://d1it09c4puycyh.cloudfront.net/catalog/product/3/0/30973e.jpeg" alt="Jeans">
+            <p>Blue Jeans</p>
+        </div>
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/614aiM56siL._AC_UY1000_.jpg" alt="Sneakers">
+            <p>Sneakers</p>
+        </div>
+        <div class="item">
+            <img src="https://images-cdn.ubuy.co.in/65d38b0f6e04ee06892c932a-luvamia-womens-business-casual-blazer.jpg" alt="Blazer">
+            <p>Casual Blazer</p>
+        </div>
+        <div class="item">
+            <img src="https://www.alamodelabel.in/cdn/shop/products/WhatsAppImage2023-01-12at13.44.13_600x600_crop_center.jpg?v=1735463061" alt="Sweater">
+            <p>Woolen Sweater</p>
+        </div>
+        <div class="item">
+            <img src="https://i.etsystatic.com/12068282/r/il/38c693/5486649328/il_570xN.5486649328_pdyn.jpg" alt="Long Coat">
+            <p>Long Coat</p>
+        </div>
+        <div class="item">
+            <img src="https://images-cdn.ubuy.co.in/6539e5593783c51b1e6c6e08-straw-fedora-hat-mens-fedora-hats-for.jpg" alt="Fedora Hat">
+            <p>Fedora Hat</p>
+        </div>
+    </div>
+
+    <script>
+        function suggestOutfit() {
+            let outfits = [
+                "Denim Jacket & Blue Jeans",
+                "Hoodie & Sneakers",
+                "Summer Dress & Fedora Hat",
+                "Graphic T-Shirt & Long Coat",
+                "Blazer & Woolen Sweater",
+                "Casual Blazer & Sneakers",
+                "T-Shirt & Blue Jeans",
+                "Sweater & Long Coat",
+                "Summer Dress & Blazer",
+                "Hoodie & Blue Jeans"
+            ];
+            let randomIndex = Math.floor(Math.random() * outfits.length);
+            document.getElementById("suggested-outfit").innerText = "Suggested Outfit: " + outfits[randomIndex];
+        }
+    </script>
+
+</body>
+</html>
